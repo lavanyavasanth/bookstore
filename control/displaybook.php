@@ -2,8 +2,7 @@
     require("../../model/db.php");
     $select_query = $conn->prepare("SELECT BookTitle, LanguageWritten, BookCover FROM book");
     $select_query->execute();
-    $select_query->setFetchMode(PDO:: FETCH_ASSOC);
-    
+    $select_query->setFetchMode(PDO:: FETCH_ASSOC);    
     
     while($row = $select_query->fetch()):
 ?>

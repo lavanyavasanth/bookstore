@@ -17,7 +17,7 @@ if(!empty([$_POST]))
     $bookcover = !empty($_POST['bookcover'])? testUserInput(($_POST['bookcover'])):null;
     $createddate = !empty($_POST['createddate'])? testUserInput(($_POST['createddate'])):null;
     $modifieddate = !empty($_POST['modifieddate'])? testUserInput(($_POST['modifieddate'])):null;
-    echo $name;
+    //echo $name;
     try
     {
         
