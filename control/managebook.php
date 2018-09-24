@@ -23,8 +23,7 @@ if(!empty([$_POST]))
         
         $queryBook = addBook($name, $surname, $nationality, $birthyear, $deathyear, $booktitle, $originaltitle, $yearofpublication, $genre, $millionssold, $languagewritten, $bookcover, $createddate, $modifieddate);
         
-        header('location:../view/pages/viewall_book.php');
-        
+        header('location:../view/pages/viewall_book.php');        
         
     }
 
