@@ -8,10 +8,10 @@
 ?>
     <div class="holder">
 <?php
-    echo '<img src="'.$row['BookCover'].'">';
+    echo '<img src="../img/BookCovers/'.$row['BookCover'].'">';
     echo "<h5>".$row['BookTitle']."</h5><h5> ".$row['LanguageWritten']."</h5>";
 ?>
-    <form method = 'post'>
+    <form method = 'post' action="editbook.php" enctype="multipart/form-data">
         <button id='but' name = 'edit'>Edit</button>
         <button id='but' name = 'delete'>Delete</button>
     </form>

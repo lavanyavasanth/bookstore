@@ -10,24 +10,16 @@ if(!empty([$_POST]))
     $email = !empty($_POST['email'])? testUserInput(($_POST['email'])):null;
     $role = !empty($_POST['role'])? testUserInput(($_POST['role'])):null;
     $password = password_hash($mypass, PASSWORD_DEFAULT);
-//    echo $username;
-
-
     try
-    {
-        
-        $querySuccess = addUser($firstname, $lastname, $email, $role, $username, $password);
-        
-        header('location:../login.php');
-        
-        
+    {        
+        $querySuccess = addUser($firstname, $lastname, $email, $role, $username, $password);        
+        header('location:../login.php');       
     }
-
       catch(PDOException $e)
         {
         echo "Error".$e -> getMessage();
         die();
         }
-    }
+}
 
 ?>
