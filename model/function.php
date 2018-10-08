@@ -38,7 +38,7 @@ function addUser($firstname, $lastname, $email, $role, $username, $password){
     }
 }
 
-function addBook($name, $surname, $nationality, $birthyear, $deathyear, $booktitle, $originaltitle, $yearofpublication, $genre, $millionssold, $languagewritten, $bookcover){
+function addBook($name, $surname, $nationality, $birthyear, $deathyear, $booktitle, $originaltitle, $yearofpublication, $genre, $millionsold, $languagewritten, $bookcover){
     global $conn;
     try{
         $conn->beginTransaction();
@@ -50,7 +50,7 @@ function addBook($name, $surname, $nationality, $birthyear, $deathyear, $booktit
         $stmt->bindValue(':birthyear', $birthyear);
         $stmt->bindValue(':deathyear', $deathyear);
         $result = $stmt->execute();
-    
+        
         $lastauthorid = $conn->lastInsertId();
         
         $displaybook = "INSERT INTO book(BookTitle, OriginalTitle, YearofPublication, Genre, MillionsSold, LanguageWritten, BookCover, AuthorID) VALUES(:booktitle, :originaltitle, :yearofpublication, :genre, :millionssold, :languagewritten, :bookcover, :AuthorID)";
@@ -63,15 +63,17 @@ function addBook($name, $surname, $nationality, $birthyear, $deathyear, $booktit
         $stmt->bindValue('languagewritten', $languagewritten);
         $stmt->bindValue(':bookcover', $bookcover);
         $stmt->bindValue('AuthorID', $lastauthorid);
- 	    $stmt->execute();
+ 	    $result = $stmt->execute();
         
-//        $lastbookid = $conn->lastInsertId();
-//        
-//        $displaylog = "INSERT INTO booklog(CreatedDate, ModifiedDate, BookID, UserID) VALUES (NOW(), NOW(), :BookID, :UserID)";
-//        $stmt = $conn->prepare($displaylog);
-//        $stmt->bindValue(':BookID', $lastbookid);
-//        $stmt->bindValue(':UserID', $lastUserid);
-//        $stmt->execute();
+        $lastbookid = $conn->lastInsertId();
+        
+        $displaylog = "INSERT INTO booklog(CreatedDate, ModifiedDate, BookID,UserID) VALUES (:createddate, :modifieddate, :BookID, :UserID)";
+        $stmt = $conn->prepare($displaylog);
+        $stmt->bindValue(':createddate', $createddate);
+        $stmt->bindValue(':modifieddate', $modifieddate);
+        $stmt->bindValue(':BookID', $lastbookid);
+        $stmt->bindValue(':UserID', $lastUserid);
+        $stmt->execute();
         
         $conn->commit();
     }
