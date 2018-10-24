@@ -1,6 +1,6 @@
 <?php   
     require("../../model/db.php");
-    $select_query = $conn->prepare("SELECT BookTitle, LanguageWritten, BookCover FROM book");
+    $select_query = $conn->prepare("SELECT * FROM book");
     $select_query->execute();
     $select_query->setFetchMode(PDO:: FETCH_ASSOC);    
     
@@ -8,18 +8,15 @@
 ?>
     <div class="holder">
 <?php
-    echo '<img src="'.$row['BookCover'].'">';
+    
+    echo '<img src="../img/BookCovers/'.$row['BookCover'].'">';
     echo "<h5>".$row['BookTitle']."</h5><h5> ".$row['LanguageWritten']."</h5>";
-?>
-    <form method = 'post'>
-        <button id='but' name = 'edit'>Edit</button>
-        <button id='but' name = 'delete'>Delete</button>
-    </form>
+?>          
+    <a href ="updatebook.php?updateBook=<?php echo $row['BookID']; ?>">Edit</a>
+
+        <a href = "deletebook.php?deleteBook=<?php echo $row['BookID']; ?>">Delete</a>
     </div>
     
 <?php
     endwhile;
 ?>
-        
-        
-
