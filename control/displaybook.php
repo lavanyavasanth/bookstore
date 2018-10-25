@@ -14,7 +14,7 @@
 ?>          
     <a href ="updatebook.php?updateBook=<?php echo $row['BookID']; ?>">Edit</a>
 
-        <a href = "delbook.php?deleteBook=<?php echo $row['BookID']; ?>">Delete</a>
+    <a href = "delbook.php?deleteBook=<?php echo $row['BookID']; ?>">Delete</a>
     </div>
     
 <?php

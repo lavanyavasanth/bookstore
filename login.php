@@ -13,12 +13,14 @@ include('view/pages/header.php');
             <form class="form-signin" action="control/pdologin.php" method="POST">
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="text" id="inputEmail" name = "username" class="form-control" placeholder="username" required autofocus pattern="[a-zA-Z]{3,}" title="Invalid Username">
-                <input type="text" id="inputPassword" class="form-control" placeholder="Password" name= "password" required pattern="[a-zA-Z]{3,}" title="Invalid password">
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name= "password" required pattern="[a-zA-Z]{3,}" title="Invalid password">
+<!--
                 <div id="remember" class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
                 </div>
+-->
                 <input type="submit" class="btn btn-lg btn-primary btn-block btn-signin" value="Sign In">
             </form><!-- /form -->
 <!--

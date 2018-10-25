@@ -15,8 +15,7 @@ if(!empty([$_POST]))
     $millionssold = !empty($_POST['millionssold'])? testUserInput(($_POST['millionssold'])):null;
     $languagewritten = !empty($_POST['languagewritten'])? testUserInput(($_POST['languagewritten'])):null;
     $bookcover = !empty($_POST['bookcover'])? testUserInput(($_POST['bookcover'])):null;
-//    $createddate = !empty($_POST['createddate'])? testUserInput(($_POST['createddate'])):null;
-//    $modifieddate = !empty($_POST['modifieddate'])? testUserInput(($_POST['modifieddate'])):null;
+
     try
     {
         

@@ -1,7 +1,7 @@
 <?php
 require("../model/db.php");
 require("../model/function.php");
-//require("../control/pagesecurity.php");
+
 if(!empty([$_POST]))
 {
     $username = !empty($_POST['username'])? testUserInput(($_POST['username'])):null;

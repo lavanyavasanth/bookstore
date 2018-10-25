@@ -6,9 +6,8 @@ Database:
 Server: localhost
 Hosting software to localhost: Windows: XAMPP
 PHPMyAdmin database(SQL)
-PHPMyAdmin web link: http://localhost/phpmyadmin/login.php
+PHPMyAdmin web link: localhost/bookstore/login.php
 
-Internet access to connect
 
 Database name: bookstore	 username:"root"		password:""	 Privilege: all
 

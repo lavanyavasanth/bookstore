@@ -12,7 +12,7 @@
 						</div>
                         <div class="form-group">
 							<label for="password">password</label>
-							<input type="text" id="confirmpass" class="form-control" name="password" placeholder="" required pattern="[a-zA-Z0-9]{3,}" title="Invalid Character">
+							<input type="password" id="confirmpass" class="form-control" name="password" placeholder="" required pattern="[a-zA-Z0-9]{3,}" title="Invalid Character">
                         </div>
 						<div class="form-group">
 							<label for="firstname">FirstName</label>

@@ -3,18 +3,7 @@ include('header.php');
 include('navbar.php');
 include('../../model/db.php');
 
-//    if(isset($_GET['updateAuthor'])){
-//        $AuthorID = $_GET['updateAuthor'];
-//        $sel_author = $conn->prepare("SELECT * FROM author WHERE AuthorID = :AuthorID");
-//        $sel_author->bindparam(':AuthorID', $AuthorID);
-//        $sel_author->execute();
-//        $rows = $sel_author->fetch();
-//
-//        $Name = $rows['Name'];
-//        $Surname = $rows['Surname'];
-//        $Nationality = $rows['Nationality'];
-//        $BirthYear = $rows['BirthYear'];
-//        $DeathYear = $rows['DeathYear'];
+
     
     if (isset($_GET['updateBook'])){
     $BookID = $_GET['updateBook'];

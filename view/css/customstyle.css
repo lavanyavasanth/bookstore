@@ -140,30 +140,7 @@ body, html {
 .forgot-password:focus{
     color: rgb(12, 97, 33);
 }
-/********************login***************/
-/********************addbook********************/
-/*-----Background-----*/
 
-
-
-/*-----for border----*/
-/*
-.container{
-	font-family:Roboto,sans-serif;
-	  background-image:url(https://image.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg) ;
-    
-     border-style: 1px solid grey;
-     margin: 0 auto;
-     text-align: center;
-     opacity: 0.8;
-     margin-top: 67px;
-   box-shadow: 2px 5px 5px 0px #eee;
-     max-width: 500px;
-     padding-top: 10px;
-     height: 363px;
-     margin-top: 166px;
-}
-*/
 /*--- for label of first and last name---*/
 .lastname{
 	 margin-left: 1px;
@@ -271,13 +248,7 @@ body, html {
 	
 }	 
 	  
-/*********************addbook*******************/
-/************custom navbar**********************/
-/*********navbar**************/
-/*
-.navbar-default .navbar-nav>li>a {
-    color: #eee;
-}
+
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
     color: yellow;
     background-color: #35b2b2;
@@ -286,19 +257,8 @@ body, html {
     background-color:#35b2b2;
     color:white;
 }
-*/
-/********* custom navbar*************/
 
-/*
-html{
-	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size:18px;
-    margin: 0;
-    padding: 0;
-    border: 0;
-     
-}
-*/
+
 
 .flex-container{
 	display:flex;
@@ -340,19 +300,7 @@ article{
     color: #fff;
     text-decoration: none;
 }
-/*
-#but{
-    width: 60px;
-    height: 35px;
-    background: #fff;
-    border-radius: 3px;
-    border: 1px solid #400040;
-}
-#but:hover{
-    background: #60A8FA;
-    color: #fff;
-}
-*/
+
 @media only screen and (max-width: 900px) {
 .flex-container {
 	width:100%;
