@@ -3,7 +3,20 @@ require("../model/db.php");
 require("../model/function.php");
 //date_default_timezone_set('Australia/Brisbane');
 //$mydate = date('Y-m-d H:i:s');
-if(isset($_POST['bookid'])){
+//        if(isset($_POST['authorid'])){
+//            $authorid = $_POST['authorid'];
+//            $name = $_POST['name'];
+//            $surname = $_POST['surname'];
+//            $nationality = $_POST['nationality'];
+//            $birthyear = $_POST['birthyear'];
+//            $deathyear = $_POST['deathyear'];  
+if(isset($_POST['authorid'])){
+    $authorid = $_POST['authorid'];
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];
+    $nationality = $_POST['nationality'];
+    $birthyear = $_POST['birthyear'];
+    $deathyear = $_POST['deathyear'];
     $bookid = $_POST['bookid'];
     $booktitle = $_POST['booktitle'];
     $originaltitle = $_POST['originaltitle'];
@@ -12,18 +25,24 @@ if(isset($_POST['bookid'])){
     $millionssold = $_POST['millionssold'];
     $languagewritten = $_POST['languagewritten'];
     $bookcover = $_POST['bookcover'];
-    try{
-        updateBook($bookid, $booktitle, $originaltitle, $yearofpublication, $genre, $millionssold, $languagewritten, $bookcover);
-//        $mydate = '2018-10-24 16:08:12';
-        $myuser = $_SESSION['UserID'];
     
-        updateBookLog($bookid,$myuser);
+ 
+        try{
+            updateAuthor($authorid, $name, $surname, $nationality, $birthyear, $deathyear);
+            updateBook($bookid, $booktitle, $originaltitle, $yearofpublication, $genre, $millionssold, $languagewritten, $bookcover);
+
+
+            $myuser = $_SESSION['UserID'];
+
+            updateBookLog($bookid,$myuser);
+
+            header('location:../view/pages/viewall_book.php');
+        }
+        catch(PDOException $e){
+            echo "Error".$e -> getMessage();
+            die();
+        }
+    //} 
+}
         
-        header('location:../view/pages/viewall_book.php');
-    }
-    catch(PDOException $e){
-        echo "Error".$e -> getMessage();
-        die();
-    }
-} 
 ?>

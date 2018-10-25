@@ -3,20 +3,45 @@ include('header.php');
 include('navbar.php');
 include('../../model/db.php');
 
-if (isset($_GET['updateBook'])){
-$BookID = $_GET['updateBook'];
-$sel_book = $conn->prepare("SELECT * FROM book where BookID= :BookID");
-$sel_book->bindParam(':BookID', $BookID);
-$sel_book->execute();
-$row = $sel_book->fetch();
+//    if(isset($_GET['updateAuthor'])){
+//        $AuthorID = $_GET['updateAuthor'];
+//        $sel_author = $conn->prepare("SELECT * FROM author WHERE AuthorID = :AuthorID");
+//        $sel_author->bindparam(':AuthorID', $AuthorID);
+//        $sel_author->execute();
+//        $rows = $sel_author->fetch();
+//
+//        $Name = $rows['Name'];
+//        $Surname = $rows['Surname'];
+//        $Nationality = $rows['Nationality'];
+//        $BirthYear = $rows['BirthYear'];
+//        $DeathYear = $rows['DeathYear'];
+    
+    if (isset($_GET['updateBook'])){
+    $BookID = $_GET['updateBook'];
+    $sel_book = $conn->prepare("SELECT * FROM book where BookID= :BookID");
+    $sel_book->bindParam(':BookID', $BookID);
+    $sel_book->execute();
+    $row = $sel_book->fetch();
 
-$BookTitle = $row['BookTitle'];
-$OriginalTitle = $row['OriginalTitle'];
-$YearofPublication = $row['YearofPublication'];
-$Genre = $row['Genre'];
-$MillionsSold = $row['MillionsSold'];
-$LanguageWritten = $row['LanguageWritten'];
-$BookCover = $row['BookCover'];
+    $BookTitle = $row['BookTitle'];
+    $OriginalTitle = $row['OriginalTitle'];
+    $YearofPublication = $row['YearofPublication'];
+    $Genre = $row['Genre'];
+    $MillionsSold = $row['MillionsSold'];
+    $LanguageWritten = $row['LanguageWritten'];
+    $BookCover = $row['BookCover'];
+        
+    $AuthorID = $_GET['updateBook'];
+    $sel_author = $conn->prepare("SELECT * FROM author WHERE AuthorID = :AuthorID");
+    $sel_author->bindparam(':AuthorID', $AuthorID);
+    $sel_author->execute();
+    $rows = $sel_author->fetch();
+
+    $Name = $rows['Name'];
+    $Surname = $rows['Surname'];
+    $Nationality = $rows['Nationality'];
+    $BirthYear = $rows['BirthYear'];
+    $DeathYear = $rows['DeathYear'];
 
 ?>
 <div class="row">
@@ -25,6 +50,30 @@ $BookCover = $row['BookCover'];
                 <div class="panel-heading">Update Book</div>
                 <div class="panel-body">
                     <form role="Form" method="POST" action="../../control/updatebookprocess.php" accept-charset="UTF-8">
+                        <input type="hidden" name="authorid" value="<?php echo $AuthorID; ?>">
+                        <fieldset>
+                            <legend>Author Detail</legend>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" class="form-control" name="name" value="<?php echo $Name; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="surname">Surname</label>
+                                <input type="text" id="surname" class="form-control" name="surname" value="<?php echo $Surname; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="nationality">Nationality</label>
+                                <input type="text" id="nationality" class="form-control" name="nationality" value="<?php echo $Nationality; ?>">
+                            </div>
+                             <div class="form-group">
+                                <label for="birthyear">Birthyear</label>
+                                <input type="text" id="birthyear" class="form-control" name="birthyear" value="<?php echo $BirthYear; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="deathyear">DeathYear</label>
+                                <input type="text" id="deathyear" class="form-control" name="deathyear" value="<?php echo $DeathYear; ?>">
+                            </div>                
+                        </fieldset>
                         <fieldset>
                             <input type="hidden" name="bookid" value="<?php echo $BookID; ?>">
                             <legend>Book Detail</legend>
@@ -67,6 +116,7 @@ $BookCover = $row['BookCover'];
         </div>
     </div>
 <?php 
+    
 }
     include('footer.php'); 
 ?>

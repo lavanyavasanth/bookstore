@@ -87,45 +87,42 @@ function addBook($name, $surname, $nationality, $birthyear, $deathyear, $booktit
 //*************Insert Book***********************//
 
 //*************Update Book***********************//
+function updateAuthor($authorid, $name, $surname, $nationality, $birthyear, $deathyear){
+    global $conn;
+    $updateauthor = "UPDATE author SET Name = :name, Surname = :surname, Nationality = :nationality, BirthYear = :birthyear, DeathYear =:deathyear WHERE AuthorID= :AuthorID";
+    $stmt = $conn->prepare($updateauthor);
+    $stmt->bindValue(':name', $name);
+    $stmt->bindValue(':surname', $surname);
+    $stmt->bindValue(':nationality', $nationality);
+    $stmt->bindValue(':birthyear', $birthyear);
+    $stmt->bindValue(':deathyear', $deathyear);
+    $stmt->bindValue(':AuthorID', $authorid);
+    $result = $stmt->execute();    
+}
 function updateBook($bookid, $booktitle, $originaltitle, $yearofpublication, $genre, $millionssold, $languagewritten, $bookcover){
         global $conn;
-       $updatebook = "UPDATE book SET BookTitle= :booktitle, YearofPublication= :yearofpublication, Genre= :genre, MillionsSold= :millionssold, LanguageWritten= :languagewritten, BookCover= :bookcover WHERE BookID= :BookID";
-            $stmt = $conn->prepare($updatebook);
-            $stmt->bindValue(':booktitle', $booktitle);
-            $stmt->bindValue(':yearofpublication', $yearofpublication);
-            $stmt->bindValue(':genre', $genre);
-            $stmt->bindValue(':millionssold', $millionssold);
-            $stmt->bindValue(':languagewritten', $languagewritten);
-            $stmt->bindValue(':bookcover', $bookcover);
-            $stmt->bindValue(':BookID', $bookid);
-            $result = $stmt->execute();
+        $updatebook = "UPDATE book SET BookTitle= :booktitle, YearofPublication= :yearofpublication, Genre= :genre, MillionsSold= :millionssold, LanguageWritten= :languagewritten, BookCover= :bookcover WHERE BookID= :BookID";
+        $stmt = $conn->prepare($updatebook);
+        $stmt->bindValue(':booktitle', $booktitle);
+        $stmt->bindValue(':yearofpublication', $yearofpublication);
+        $stmt->bindValue(':genre', $genre);
+        $stmt->bindValue(':millionssold', $millionssold);
+        $stmt->bindValue(':languagewritten', $languagewritten);
+        $stmt->bindValue(':bookcover', $bookcover);
+        $stmt->bindValue(':BookID', $bookid);
+        $result = $stmt->execute();
     }
             
 function updateBookLog($bookid,$myuser){
-            global $conn;
-            $displaylog = "Update booklog SET ModifiedDate = NOW(), UserID =:UserID WHERE BookID= :BookID";
+        global $conn;
+        $displaylog = "Update booklog SET ModifiedDate = NOW(), UserID =:UserID WHERE BookID= :BookID";
 //            $displaylog = "INSERT INTO booklog(ModifiedDate, BookID, UserID) VALUES (NOW(), :BookID,:UserID)";
-            $stmt = $conn->prepare($displaylog);
-            $stmt->bindValue(':BookID', $bookid);
-            $stmt->bindValue(':UserID', $myuser);
-            $stmt->execute();
+        $stmt = $conn->prepare($displaylog);
+        $stmt->bindValue(':BookID', $bookid);
+        $stmt->bindValue(':UserID', $myuser);
+        $stmt->execute();
 }
 //        $conn->commit();
 
 //*************Update Book***********************//
-//*************Delete Book***********************//
 
-//function deleteBook($bookid, $booktitle, $originaltitle, $yearofpublication, $genre, $millionssold, $languagewritten, $bookcover){
-//    global $conn;
-//    try{
-//        $conn->beginTransaction();
-//        $deletebook = "DELETE * FROM book WHERE BookID= :BookID";
-//        $stmt = $conn->prepare($deletebook);
-//        $stmt->execute();
-//        
-//        $lastbookid = $conn->lastInsertId();
-//        
-//        
-//    }
-//}
-//*************Delete Book***********************//
