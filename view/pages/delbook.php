@@ -1,3 +1,4 @@
+//delete query to delete book and log from database
 <?php 
 include('../../model/db.php');
 if (isset($_GET['deleteBook'])){
@@ -12,7 +13,7 @@ if (isset($_GET['deleteBook'])){
     $deletelog = "DELETE FROM booklog WHERE BookID = '$bookid'";
      $stmt = $conn->prepare($deletelog);
     $stmt->execute();
-    
+    $_SESSION[ "message" ] = "Book deleted successfully!!!";
     header('location: viewall_book.php');
 }
 ?>

@@ -2,7 +2,7 @@
 $dbusername = "root";
 $dbpassword = "";
 try{
-    $conn = new PDO("mysql:host=localhost;dbname=bookstore", $dbusername,$dbpassword);
+    $conn = new PDO("mysql:host=localhost;dbname=newbooks", $dbusername,$dbpassword);// connection to the database
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 }

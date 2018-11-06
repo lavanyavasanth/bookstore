@@ -1,13 +1,13 @@
 <?php
-session_start();
-function testUserInput($data){
+session_start();//  starting the session
+function testUserInput($data){ // function to sanitize the input
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;
 }
 
-function addUser($firstname, $lastname, $email, $role, $username, $password){
+function addUser($firstname, $lastname, $email, $role, $username, $password){ // adding inputs to the user table using transaction
  	global $conn;
     try
     {
@@ -22,7 +22,7 @@ function addUser($firstname, $lastname, $email, $role, $username, $password){
         
     $lastUserid = $conn->lastInsertId();
     
-    
+    // adding inputs to the login table using transaction
     $sql = "INSERT INTO login(Username, Password, UserID) VALUES (:username, :password, :UserID)";   
     $stmt = $conn->prepare($sql);
  	$stmt->bindValue(':username', $username);
@@ -40,8 +40,9 @@ function addUser($firstname, $lastname, $email, $role, $username, $password){
     }
 }
 //*************Insert Book***********************//
-date_default_timezone_set('Australia/Brisbane');
-$date = date('Y-m-d H:i:s');
+//date_default_timezone_set('Australia/Brisbane');
+//$date = date('Y-m-d H:i:s');
+// adding inputs to the author table using transaction
 function addBook($name, $surname, $nationality, $birthyear, $deathyear, $booktitle, $originaltitle, $yearofpublication, $genre, $millionssold, $languagewritten, $bookcover){
     global $conn;
     try{
@@ -56,7 +57,7 @@ function addBook($name, $surname, $nationality, $birthyear, $deathyear, $booktit
         $result = $stmt->execute();
     
         $lastauthorid = $conn->lastInsertId();
-        
+        // adding inputs to the book table using transaction
         $displaybook = "INSERT INTO book(BookTitle, OriginalTitle, YearofPublication, Genre, MillionsSold, LanguageWritten, BookCover, AuthorID) VALUES(:booktitle, :originaltitle, :yearofpublication, :genre, :millionssold, :languagewritten, :bookcover, :AuthorID)";
         $stmt = $conn->prepare($displaybook);
  	    $stmt->bindValue(':booktitle', $booktitle);
@@ -70,7 +71,7 @@ function addBook($name, $surname, $nationality, $birthyear, $deathyear, $booktit
  	    $result = $stmt->execute();
         
         $lastbookid = $conn->lastInsertId();
-                
+        // adding inputs to the log table using transaction
         $displaylog = "INSERT INTO booklog(CreatedDate, ModifiedDate, BookID, UserID) VALUES (NOW(),NOW(), :BookID, :UserID)";
         $stmt = $conn->prepare($displaylog);
         $stmt->bindValue(':BookID', $lastbookid);
@@ -87,6 +88,7 @@ function addBook($name, $surname, $nationality, $birthyear, $deathyear, $booktit
 //*************Insert Book***********************//
 
 //*************Update Book***********************//
+// updating inputs to the author table using transaction
 function updateAuthor($authorid, $name, $surname, $nationality, $birthyear, $deathyear){
     global $conn;
     $updateauthor = "UPDATE author SET Name = :name, Surname = :surname, Nationality = :nationality, BirthYear = :birthyear, DeathYear =:deathyear WHERE AuthorID= :AuthorID";
@@ -99,30 +101,28 @@ function updateAuthor($authorid, $name, $surname, $nationality, $birthyear, $dea
     $stmt->bindValue(':AuthorID', $authorid);
     $result = $stmt->execute();    
 }
+// updating inputs to the book table using transaction
 function updateBook($bookid, $booktitle, $originaltitle, $yearofpublication, $genre, $millionssold, $languagewritten, $bookcover){
-        global $conn;
-        $updatebook = "UPDATE book SET BookTitle= :booktitle, YearofPublication= :yearofpublication, Genre= :genre, MillionsSold= :millionssold, LanguageWritten= :languagewritten, BookCover= :bookcover WHERE BookID= :BookID";
-        $stmt = $conn->prepare($updatebook);
-        $stmt->bindValue(':booktitle', $booktitle);
-        $stmt->bindValue(':yearofpublication', $yearofpublication);
-        $stmt->bindValue(':genre', $genre);
-        $stmt->bindValue(':millionssold', $millionssold);
-        $stmt->bindValue(':languagewritten', $languagewritten);
-        $stmt->bindValue(':bookcover', $bookcover);
-        $stmt->bindValue(':BookID', $bookid);
-        $result = $stmt->execute();
-    }
-            
-function updateBookLog($bookid,$myuser){
-        global $conn;
-        $displaylog = "Update booklog SET ModifiedDate = NOW(), UserID =:UserID WHERE BookID= :BookID";
-//            $displaylog = "INSERT INTO booklog(ModifiedDate, BookID, UserID) VALUES (NOW(), :BookID,:UserID)";
-        $stmt = $conn->prepare($displaylog);
-        $stmt->bindValue(':BookID', $bookid);
-        $stmt->bindValue(':UserID', $myuser);
-        $stmt->execute();
+    global $conn;
+    $updatebook = "UPDATE book SET BookTitle= :booktitle, YearofPublication= :yearofpublication, Genre= :genre, MillionsSold= :millionssold, LanguageWritten= :languagewritten, BookCover= :bookcover WHERE BookID= :BookID";
+    $stmt = $conn->prepare($updatebook);
+    $stmt->bindValue(':booktitle', $booktitle);
+    $stmt->bindValue(':yearofpublication', $yearofpublication);
+    $stmt->bindValue(':genre', $genre);
+    $stmt->bindValue(':millionssold', $millionssold);
+    $stmt->bindValue(':languagewritten', $languagewritten);
+    $stmt->bindValue(':bookcover', $bookcover);
+    $stmt->bindValue(':BookID', $bookid);
+    $result = $stmt->execute();
 }
-//        $conn->commit();
-
+      // updating inputs to the log table using transaction      
+function updateBookLog($bookid,$myuser){
+    global $conn;
+    $displaylog = "Update booklog SET ModifiedDate = NOW(), UserID =:UserID WHERE BookID= :BookID";
+    $stmt = $conn->prepare($displaylog);
+    $stmt->bindValue(':BookID', $bookid);
+    $stmt->bindValue(':UserID', $myuser);
+    $stmt->execute();
+}
 //*************Update Book***********************//
 

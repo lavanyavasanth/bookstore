@@ -1,5 +1,6 @@
 <?php include('header.php');?>
 <?php include('navbar.php');?>
+<!--form to add book-->
 <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-primary">
@@ -58,7 +59,7 @@
 
                             <div class="form-group">
                                 <label for="bookcover">Book Cover</label>
-                                <input type="file" id="bookcover" class="form-control" name="bookcover" placeholder="" required>
+                                <input type="file" id="bookcover" class="form-control" name="bookcover" placeholder="">
                             </div>                        
                             <div class="form-group text-center">
                                 <input type="submit" class="btn btn-primary btn-lg" id="submitbtn" name="submit" value="Add">

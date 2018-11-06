@@ -278,12 +278,51 @@ article{
 	width:25%;
 	height:auto;
 	float:left;
-    padding-left: 20px;
-    padding-top: 20px;
+    padding: 2%;
+    
+/*
+    background-color: yellow;
+    border: 1px solid black;
+*/
 }
 .holder img {
-	width:50%;
-	height:30%;
+	width:100%;
+	height:auto;
+}
+ .holder .name{
+    padding-left: 10%; 
+    color: orange;
+    font-style: normal;
+     
+}
+ .holder .sur{
+    padding-left: 10%; 
+    color: orange;
+    font-style: normal;
+     
+}
+ .holder .yop{
+    padding-left: 10%; 
+    color: orange;
+    font-style: oblique;
+    font-weight: 500;
+}
+ .holder .sold{
+    padding-left: 10%; 
+    color: orange;
+    font-style: oblique;
+     font-weight: bold;
+}
+ .holder .title{
+    padding-left: 10%; 
+    color: orange;
+    font-style: italic;
+     font-weight: 700;
+}
+ .holder b{
+    padding-left: 10%; 
+    color: black;
+     
 }
 .holder a:link, .holder a:visited {
     background-color: lightcyan;
@@ -305,7 +344,17 @@ article{
 .flex-container {
 	width:100%;
 }
-
+.holder img {
+	width:100%;
+	height:auto;
+    padding: 13%;
+}
+ .holder h5{
+    padding-left: 13%;   
+}
+    .holder a{
+       padding: 13%; 
+    }
 }
 
 @media only screen and (max-width: 500px) {

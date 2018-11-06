@@ -2,7 +2,7 @@
 require("../model/db.php");
 require("../model/function.php");
   
-if(isset($_POST['authorid'])){
+if(isset($_POST['authorid'])){ //sanitizing the input and fething the values
  $authorid = !empty($_POST['authorid'])?testUserInput(($_POST['authorid'])):null;
     $name = !empty($_POST['name'])?testUserInput(($_POST['name'])):null;
     $surname = !empty($_POST['surname'])?testUserInput(($_POST['surname'])):null;
@@ -16,7 +16,7 @@ if(isset($_POST['authorid'])){
     $genre = !empty($_POST['genre'])?testUserInput(($_POST['genre'])):null;
     $millionssold = !empty($_POST['millionssold'])?testUserInput(($_POST['millionssold'])):null;
     $languagewritten = !empty($_POST['languagewritten'])?testUserInput(($_POST['languagewritten'])):null;
-    $bookcover = !empty($_POST['bookcover'])?testUserInput(($_POST['bookcover'])):null;
+    $bookcover = !empty($_POST['bookcover'])?testUserInput(($_POST['bookcover'])):"";
     
     
  
@@ -25,6 +25,7 @@ if(isset($_POST['authorid'])){
             updateBook($bookid, $booktitle, $originaltitle, $yearofpublication, $genre, $millionssold, $languagewritten, $bookcover);
             $myuser = $_SESSION['UserID'];
             updateBookLog($bookid,$myuser);
+            $_SESSION[ "message" ] = "Book updated successfully!!!";
             header('location:../view/pages/viewall_book.php');
         }
         catch(PDOException $e){

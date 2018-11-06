@@ -1,7 +1,7 @@
 <?php
 require("../model/db.php");
 require("../model/function.php");
-if(!empty([$_POST]))
+if(!empty([$_POST]))//checking whether the field is empty and sanitisizing the inputs
 {
     $name = !empty($_POST['name'])? testUserInput(($_POST['name'])):null;
     $surname = !empty($_POST['surname'])? testUserInput(($_POST['surname'])):null;
@@ -14,7 +14,7 @@ if(!empty([$_POST]))
     $genre = !empty($_POST['genre'])? testUserInput(($_POST['genre'])):null;
     $millionssold = !empty($_POST['millionssold'])? testUserInput(($_POST['millionssold'])):null;
     $languagewritten = !empty($_POST['languagewritten'])? testUserInput(($_POST['languagewritten'])):null;
-    $bookcover = !empty($_POST['bookcover'])? testUserInput(($_POST['bookcover'])):null;
+    $bookcover = !empty($_POST['bookcover'])? testUserInput(($_POST['bookcover'])):"";
 
     try
     {
@@ -32,3 +32,4 @@ if(!empty([$_POST]))
         }
 }
 ?>
+

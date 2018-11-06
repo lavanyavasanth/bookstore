@@ -3,7 +3,7 @@ require("../model/db.php");
 require("../model/function.php");
 
 if(!empty([$_POST]))
-{
+{ //sanitizing the input and fetching the values 
     $username = !empty($_POST['username'])? testUserInput(($_POST['username'])):null;
     $mypass = !empty($_POST['password'])? testUserInput(($_POST['password'])):null;
     $firstname = !empty($_POST['firstname'])? testUserInput(($_POST['firstname'])):null;

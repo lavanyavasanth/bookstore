@@ -1,4 +1,4 @@
-<footer style="background: black; height: 45px;">
+<footer style="background: #f2eff4; height: 45px;">
   <div class="container">
       <div class="row">
         <div class="col-md-12">

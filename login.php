@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('view/pages/header.php');
+//include('model/displaymsg.php');
 ?>
 
 <head>
@@ -12,6 +13,7 @@ include('view/pages/header.php');
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin" action="control/pdologin.php" method="POST">
                 <span id="reauth-email" class="reauth-email"></span>
+                <?php include('model/displaymsg.php'); ?>
                 <input type="text" id="inputEmail" name = "username" class="form-control" placeholder="username" required autofocus pattern="[a-zA-Z]{3,}" title="Invalid Username">
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" name= "password" required pattern="[a-zA-Z]{3,}" title="Invalid password">
 <!--
