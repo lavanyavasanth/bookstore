@@ -14,7 +14,7 @@ if(!empty([$_POST]))
     try
     {        
         $querySuccess = addUser($firstname, $lastname, $email, $role, $username, $password);        
-        
+        $_SESSION[ "message" ] = "User created successfully!!!";
         header('location:../login.php');       
     }
       catch(PDOException $e)

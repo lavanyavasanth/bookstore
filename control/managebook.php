@@ -20,7 +20,7 @@ if(!empty([$_POST]))//checking whether the field is empty and sanitisizing the i
     {
         
         $queryBook = addBook($name, $surname, $nationality, $birthyear, $deathyear, $booktitle, $originaltitle, $yearofpublication, $genre, $millionssold, $languagewritten, $bookcover);
-        
+        $_SESSION[ 'message' ] = "Book added Successfully";
         header('location:../view/pages/viewall_book.php');        
         
     }

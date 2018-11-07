@@ -1,6 +1,7 @@
 <?php include('header.php');?>
 <?php include('navbar.php');?>
 <!--form to add book-->
+
 <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-primary">

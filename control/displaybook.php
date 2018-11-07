@@ -15,7 +15,7 @@
         echo '<img src="../img/BookCovers/'.$row['BookCover'].'">';//display the selected image
     }
         
-    echo "<h5 class='name'><b>Name: </b>".$row['Name']."</h5><h5 class='sur'><b>Surname: </b>".$row['Surname']."</h5><h5 class='title'><b>Title: </b>".$row['BookTitle']."</h5><h5 class='sold'><b>Sold: </b>".$row['MillionsSold']."</h5><h5 class='yop'><b>YOP: </b>".$row['YearofPublication']."</h5>";
+    echo "<h5 class='name'><b>Name: </b>".$row['Name']."</h5><h5 class='sur'><b>Surname: </b>".$row['Surname']."</h5><h5 class='title'><b>Title: </b>".$row['BookTitle']."</h5><h5 class='sold'><b>MillionsSold: </b>".$row['MillionsSold']."</h5><h5 class='yop'><b>YOP: </b>".$row['YearofPublication']."</h5>";
 ?> 
 <!--    displays book and author detail-->
     <div class="link" style="padding-left: 13%;">
