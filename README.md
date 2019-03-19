@@ -1,5 +1,9 @@
 # bookstore
-Readme.txt
+Description:
+This single page application is about Bookstore. I completed this project while studying 
+for my Diploma. This project is to manage role-based access control user or group of users 
+by performing various PHP scripts like PHP Cookies, PHP Sessions, PHP Exception, PHP Error 
+Handling, Web app login using php.
 _______________________________________________________________________
 Database:
 
